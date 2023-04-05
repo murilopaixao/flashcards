@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Flashcards</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='m.ico') }}" type="image/x-icon">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    
+</head>
+
+<body>
+    <header>
+        <h3>Flashcards - {{ subTitulo }}</h3> <div class="menuh"><span class="icon material-symbols-outlined menuh">menu</span></div>
+    </header>
+    <nav>
+        <div class="menuLateral">            
+            <ul>
+                <li class="list active">
+                    <a href="/">                     
+                        <span class="icon material-symbols-outlined">home</span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                        <span class="icon material-symbols-outlined">change_circle</span>
+                        <span class="title">Treinar</span>
+                        <ul class="sub-menu">
+                            <li>Escrever</li>
+                            <li>Frases</li>
+                            <li>Palavras Conhecidas</li>
+                            <li>Palavras Erradas</li>
+                        </ul>
+                </li>
+                <li class="list">
+                    <a href="/baralhos">                     
+                        <span class="icon material-symbols-outlined">library_add</span>
+                        <span class="title">Baralhos</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">                     
+                        <span class="icon material-symbols-outlined">dataset</span>
+                        <span class="title">Criar baralho</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="alterabaralho">                     
+                        <span class="icon material-symbols-outlined">view_timeline</span>
+                        <span class="title">Incluir palavra</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="/teste">                     
+                        <span class="icon material-symbols-outlined">change_circle</span>
+                        <span class="title">Repetição espaçada</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        {% block conteudoLateral %} {% endblock %}
+    </nav>
+    <section>
+            {% block conteudo %} {% endblock %}
+    </section>
+    <footer>
+        <div class="rodape">
+            {% block footer %} {% endblock %}
+        </div>
+    </footer>
+
+    {% block js %} {% endblock %}
+</body>
+
+</html>

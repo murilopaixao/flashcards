@@ -1,0 +1,28 @@
+version: '3'
+services:
+    flashcards:
+        hostname: flashcards
+        container_name: flashcards
+        build:
+          context: .
+          dockerfile: Dockerfile
+        image: flashcards:v0.0.1
+        ports:
+          - 5000:5000
+        environment:
+          - flashcard_userDB=putYourUserHere
+          - flashcard_passDB=putYourPasswordHere
+          - flashcard_hostDB=mongo:27017
+    mongo:
+        hostname: mongo
+        container_name: mongo
+        image: mongo:6.0.4-focal
+        volumes:
+          - ./mongo/:/data/db
+        ports:
+          - 27017:27017        
+        environment:
+          - MONGO_INITDB_ROOT_USERNAME=putYourUserHere
+          - MONGO_INITDB_ROOT_PASSWORD=putYourPasswordHere
+          - TZ=America/Sao_Paulo
+        restart: always

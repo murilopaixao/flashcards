@@ -1,0 +1,23 @@
+{% extends "template.html" %}
+
+{% block conteudo %}
+<article>
+
+    <div class="cardS">
+        {% for baralho in lista %}        
+        <div class="miniCard miniCard1">
+            <div class="tituloModeloGeral">
+                <div class="tituloModeloConteudo">{{baralho.baralho}}</div>
+                <div class="contador">{{baralho.subTotal}}</div>
+            </div>            
+        </div>        
+        {% endfor %}
+    </div>
+
+</article>
+{% endblock %}
+
+{% block conteudoLateral %}
+
+{% endblock %}
+

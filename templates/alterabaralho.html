@@ -1,0 +1,62 @@
+{% extends "template.html" %}
+
+{% block conteudo %}
+<article>
+<div class="addcard borda">
+    <form  method="POST" action="/addcard">
+        <div>
+            <label for="fname">Baralho</label><br>
+            <select id="baralho" name="baralho">
+                <option value="main" selected>Main</option>
+                <option value="verbos">Verbos</option>
+                <option value="conhecidas">Conhecidas</option>
+                <option value="desconhecidas">Desconhecidas</option>
+                <option value="cores">Cores</option>
+                <option value="errei">Errei</option>
+                <option value="100PalavrasMaisComuns">100PalavrasMaisComuns</option>
+                <option value="50SubstantivosMaisComuns">50SubstantivosMaisComuns</option>
+                <option value="50VerbosMaisComuns">50VerbosMaisComuns</option>
+                <option value="50AdjetivosMaisComuns">50AdjetivosMaisComuns</option>
+                <option value="1000PalavrasMaisComuns">1000PalavrasMaisComuns</option>
+                <option value="3000PalavrasMaisComuns">3000PalavrasMaisComuns</option>
+              </select>
+        </div><br>
+        <div class="radio">
+            <input type="radio" id="unit" name="tipoinclusao" value="unit" checked>
+            <label for="html">Unitário</label>
+            <input type="radio" id="unit" name="tipoinclusao" value="multiplo">
+            <label for="multiplo">Multiplo (;)</label>
+        </div>
+        
+        <div class="unitario">
+            <div class="campos">
+                <label for="fname">Inglês:</label><br>
+                <input type="text" id="flanguage1" name="flanguage1" value="">
+            </div>
+            <div class="campos">
+                <label for="lname">Português:</label><br>
+                <input type="text" id="flanguage2" name="flanguage2" value="">
+            </div>
+        </div>
+
+        <div class="message"><textarea id="myTextarea" name="message" rows="10" cols="50"></textarea></div>
+        <div class="campos">
+            <br><input type="submit" value="Gravar">
+        </div>
+    </form> 
+    
+</div>
+
+
+</article>
+
+
+{% endblock %}
+
+{% block conteudoLateral %}
+    
+{% endblock %}
+
+{% block js %}
+    <script src="{{ url_for('static', filename='alterabaralho.js') }}"></script>
+{% endblock %}
