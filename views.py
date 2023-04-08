@@ -173,7 +173,7 @@ def incluirpalavra():
             #return 'Content-Type not supported!'
             return str(result)
         
-@app.route('/popularbanco')
-def popularbanco():
-    print("Teste")
-    return 
+@app.route('/frases')
+def frases():
+    
+    return render_template('frases.html', subTitulo='Frases')

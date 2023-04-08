@@ -3,6 +3,13 @@ var mostrar = 0 ;
 var palavrasDesafioConvertida = [];
 var palavrasDesafioConvertida2 = [];
 
+var mm = 0;
+var ss = 0;
+var ml = 0;
+
+const btnCronStart = document.querySelector('.btnCronStart');
+const btnCronStop = document.querySelector('.btnCronStop');
+
 const trigger = document.querySelector('.lupa');
 var search = document.querySelector('#search');
 var texto1 = document.querySelector('.texto1');
@@ -22,8 +29,9 @@ var trocarbaralho = document.querySelector('.trocarbaralho');
 var fecharModal = document.querySelector('.fecharModal');
 var modalContainer = document.querySelector('.modal-container');
 var ulbaralho = document.querySelector('.ulbaralho');
-
-
+var menuItem = document.querySelectorAll('.list');
+var ulbaralho = document.querySelector('.ulbaralho');
+var cronometroAtivar = document.querySelector('.cronometroAtivar');
 const modal = document.querySelector("dialog")
 
 texto1.addEventListener("click",()=> {
@@ -45,21 +53,21 @@ function exibir(){
     texto2.style.display = 'block';
 }
 
-
-function menu() {
-    document.querySelectorAll('.title').forEach(result => {
-        //console.log(result.style.display)
-        if (result.style.display == 'block') {
-            result.style.display = 'none';
-            menuLateral.style.width = '70px';
-        } else {
-            result.style.display = 'block';
-            menuLateral.style.width = '300px';
-        }
-    })
+function selectLink() {
+    menuItem.forEach((item)=> 
+        item.classList.remove('ativo')
+    )
+    this.classList.add('ativo')
 }
 
-menuh.addEventListener("click",(menu));
+menuItem.forEach ((item)=>
+    item.addEventListener('click', selectLink)
+)
+
+menuh.addEventListener('click', function(){
+    menuLateral.classList.toggle('expandir')
+})
+
 
 input.addEventListener("click", result => {
     i++ ;
@@ -181,3 +189,52 @@ ulbaralho.addEventListener("click", function(e) {
 
 trocarbaralho.addEventListener("click", abreModal)
 cardTopo.addEventListener("click", abreModal)
+
+cronometroAtivar.addEventListener('click', function(){
+    cronometroAtivar.style.display = 'none';
+    document.querySelector('.cronometroInterno').style.display = 'flex';
+})
+
+var tempo = 1000; //Quantos milésimos valem 1 segundos;
+var cron;
+
+btnCronStart.addEventListener('click', function(){
+    
+    if (btnCronStart.innerHTML == 'Iniciar') {
+        cron = setInterval(() => { timer(); }, tempo);
+        btnCronStart.innerHTML = 'Pausar';
+        btnCronStart.style.background = 'yellow';
+
+    } else {
+        clearInterval(cron);
+        btnCronStart.innerHTML = 'Iniciar';
+        btnCronStart.style.background = 'green';
+    }
+    
+})
+
+btnCronStop.addEventListener('click', function(){
+    clearInterval(cron);
+    mm = 0;
+    ss = 0;
+    ml = 0;    
+    document.getElementById('minutos').innerHTML = '00';
+    document.getElementById('segundos').innerHTML = '00';
+})
+
+function timer() {
+
+    ss++;
+
+    if (ss == 60) {
+        ss = 0;
+        mm++;
+    }
+
+    var format = (mm < 10 ? '0'+ mm : mm) + ':' + (ss < 10 ? '0' + ss : ss);
+    var formatMinutos = (mm < 10 ? '0'+ mm : mm)
+    var formatSegundos = (ss < 10 ? '0' + ss : ss)
+
+    document.getElementById('minutos').innerHTML = formatMinutos;
+    document.getElementById('segundos').innerHTML = formatSegundos;
+}

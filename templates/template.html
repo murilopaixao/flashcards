@@ -13,10 +13,13 @@
 
 <body>
     <header>
-        <h3>Flashcards - {{ subTitulo }}</h3> <div class="menuh"><span class="icon material-symbols-outlined menuh">menu</span></div>
+        <h3>Flashcards - {{ subTitulo }}</h3>
     </header>
     <nav>
-        <div class="menuLateral">            
+        <div class="menuh">
+            <span class="icon material-symbols-outlined menuh">menu</span>
+        </div>
+        <div class="menuLateral">
             <ul>
                 <li class="list active">
                     <a href="/">                     
@@ -24,26 +27,10 @@
                         <span class="title">Home</span>
                     </a>
                 </li>
-                <li class="sub-menu">
-                        <span class="icon material-symbols-outlined">change_circle</span>
-                        <span class="title">Treinar</span>
-                        <ul class="sub-menu">
-                            <li>Escrever</li>
-                            <li>Frases</li>
-                            <li>Palavras Conhecidas</li>
-                            <li>Palavras Erradas</li>
-                        </ul>
-                </li>
                 <li class="list">
                     <a href="/baralhos">                     
                         <span class="icon material-symbols-outlined">library_add</span>
                         <span class="title">Baralhos</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="#">                     
-                        <span class="icon material-symbols-outlined">dataset</span>
-                        <span class="title">Criar baralho</span>
                     </a>
                 </li>
                 <li class="list">
@@ -53,12 +40,36 @@
                     </a>
                 </li>
                 <li class="list">
-                    <a href="/teste">                     
+                    <a href="/frases">                     
                         <span class="icon material-symbols-outlined">change_circle</span>
-                        <span class="title">Repetição espaçada</span>
+                        <span class="title">Frases</span>
                     </a>
                 </li>
             </ul>
+        </div>
+
+        <div class="cronometro">
+            <div class="cronometroAtivar">
+                <span>Cronômetro</span>                
+            </div>
+            <div class="cronometroInterno">
+                <div class="cronometroItem btnCron">
+                    <div class="btnCronInterno">
+                        <button class="btnCronStart">Iniciar</button>
+                    </div>
+                    <div class="btnCronInterno">
+                        <button class="btnCronStop">Parar</button>
+                    </div>
+                </div>
+                <div class="cronometroItem">
+                    <span id="minutos">00</span>
+                    <span class="tempo">Minutos</span>
+                </div>
+                <div class="cronometroItem">
+                    <span id="segundos">00</span>
+                    <span class="tempo">Segundos</span>
+                </div>
+            </div>
         </div>
         {% block conteudoLateral %} {% endblock %}
     </nav>

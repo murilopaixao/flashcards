@@ -1,0 +1,1 @@
+document.querySelector('.cardFlash').style.width = '700px';

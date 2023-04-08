@@ -1,0 +1,48 @@
+{% extends "template.html" %}
+
+{% block conteudo %}
+<article>
+    <div class="cardFlash">
+            <div class="cardFlashIng">
+                <dic class="cardTopo">Escolher baralho</dic>
+                <div class="texto1 categoria"></div>    
+            </div>       
+            <div class="cardFlashPort">
+                <div class="texto2 categoria"></div>    
+            </div>
+            <div class="comandos">
+                <div class="comandosi trocarbaralho"><span class="material-symbols-outlined">quick_reference_all</span></div>
+                <div class="comandosi exibir"><span class="material-symbols-outlined">visibility</span></div>
+                <div class="comandosi certo"><span class="material-symbols-outlined">check_circle</span></div>
+                <div class="comandosi cancel"><span class="material-symbols-outlined">cancel</span></div>
+                <div class="comandosi input"><span class="material-symbols-outlined">next_plan</span></div>
+
+            </div>
+    </div>
+
+</article>
+<dialog>
+    <div class="modal-container">
+        <div class="modal">
+            <div class="fecharModal"><span class="material-symbols-outlined">close</span></div>            
+            <div class="categoria">
+                <h2>Escolha o baralho</h2>
+                <ul class="ulbaralho"></ul>
+            </div>
+        </div>
+    </div>
+</dialog>
+{% endblock %}
+
+{% block conteudoLateral %}
+
+{% endblock %}
+
+{% block footer %} 
+{{config.baralhoPrincipal}}
+{% endblock %}
+
+{% block js %}
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <script src="{{ url_for('static', filename='frases.js') }}"></script>
+{% endblock %}
