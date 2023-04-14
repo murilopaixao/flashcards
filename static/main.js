@@ -1,5 +1,6 @@
 var i = 0;
 var mostrar = 0 ;
+var menuSmartphone = 0;
 var palavrasDesafioConvertida = [];
 var palavrasDesafioConvertida2 = [];
 
@@ -64,8 +65,9 @@ menuItem.forEach ((item)=>
     item.addEventListener('click', selectLink)
 )
 
-menuh.addEventListener('click', function(){
-    menuLateral.classList.toggle('expandir')
+menuh.addEventListener('click', () => {
+    //menuSmartphone
+    menuLateral.style.display = 'block';
 })
 
 

@@ -4,15 +4,41 @@
 <article>
 
     <div class="cardS">
-        {% for baralho in lista %}        
-        <div class="miniCard miniCard1">
-            <div class="tituloModeloGeral">
-                <div class="tituloModeloConteudo">{{baralho.baralho}}</div>
-                <div class="contador">{{baralho.subTotal}}</div>
-            </div>            
-        </div>        
+        {% for baralho in lista %}
+        <a href="/baralhos/{{baralho.baralho}}">        
+            <div class="miniCard miniCard1">
+                <div class="tituloModeloGeral">
+                    <div class="tituloModeloConteudo">{{baralho.baralho}}</div>
+                    <div class="contador">{{baralho.subTotal}}</div>
+                </div>            
+            </div>
+        </a>        
         {% endfor %}
     </div>
+    {% if detalhado %}
+    <div class="baralhoDetalhado">        
+        <table class="table-baralhoDetalhado">
+            <caption>{{baralhop}}</caption>
+            <thead>
+                <tr><th>#</th><th>Inglês</th><th>Português</th><th>Comandos</th></tr>
+            </thead>
+            <tbody>
+                {% for card in detalhado %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{card.flanguage1}}</td><td class="hidden">{{card.flanguage2}}</td>
+                    <td>
+                        <div class="comandosi certo"><span class="material-symbols-outlined">check_circle</span></div>
+                        <div class="comandosi cancel"><span class="material-symbols-outlined">cancel</span></div>
+                        <a href="/excluirpalavra/{{card._id}}"> 
+                            <div class="comandosi delete"><span class="material-symbols-outlined">delete</span></div>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>        
+
+    {% endif %}
 
 </article>
 {% endblock %}
@@ -22,5 +48,5 @@
 {% endblock %}
 
 {% block js %}
-    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <script src="{{ url_for('static', filename='baralho.js') }}"></script>
 {% endblock %}

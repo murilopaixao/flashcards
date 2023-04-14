@@ -39,8 +39,9 @@ def index():
     
     return render_template('index.html', subTitulo='Projetos', lista=lista, config=config)
 
-@app.route('/baralhos')
-def baralhos():
+@app.route('/baralhos/<baralhop>')
+@app.route('/baralhos', defaults={"baralhop": "none"})
+def baralhos(baralhop):
         lista = myCollection.distinct("baralho")
         lista1 = []
         contadores = {}
@@ -49,9 +50,11 @@ def baralhos():
             subTotal = myCollection.count_documents({"baralho": baralho})
             contadores = {"baralho": baralho, "subTotal": subTotal}
             lista1.append(contadores)
+        detalhado = ""
+        if (baralhop != "none"):
+            detalhado = myCollection.find({"baralho": baralhop})
 
-
-        return render_template('baralhos.html', subTitulo='Baralhos', lista=lista1)
+        return render_template('baralhos.html', subTitulo='Baralhos', lista=lista1, detalhado=detalhado, baralhop=baralhop)
 
 @app.route('/addcard', methods=['POST',])
 def addcard():
@@ -108,7 +111,7 @@ def desafio():
     config = myCollection.find_one({"config": "baralho"},{"_id": 0, "baralhoPrincipal": 1})
     baralho = config["baralhoPrincipal"]
 
-    lista = myCollection.aggregate([ {"$match": {"baralho": baralho}}, { "$sample": { "size": 6 }}])
+    lista = myCollection.aggregate([ {"$match": {"baralho": baralho}}, { "$sample": { "size": 30 }}])
     return dumps(lista)
 
 @app.route('/outro', methods=['GET'])
@@ -168,7 +171,8 @@ def incluirpalavra():
                 return str(result)
             else:
                 print("Registro já consta na base de dados")
-                return str(result)
+                consta = ("[{'registro': 'Existente na base'}]")
+                return dumps(consta)
         else:
             #return 'Content-Type not supported!'
             return str(result)

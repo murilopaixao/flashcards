@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/* Para smartphones */
+
+body {
+    background-color: blueviolet;
+}
+
+.menuh {
+    padding-left: 2px;  
+    cursor: pointer;
+    font-size: 50px;
+    display: block;
+    color: black;
+  }
+
+
+  .menuLateral {
+    width: 300px;  
+    padding: 40px 0 0 1%;
+    overflow: hidden;
+    transition: .5s;
+    display: none;
+}
