@@ -33,6 +33,7 @@ var ulbaralho = document.querySelector('.ulbaralho');
 var menuItem = document.querySelectorAll('.list');
 var ulbaralho = document.querySelector('.ulbaralho');
 var cronometroAtivar = document.querySelector('.cronometroAtivar');
+var crono = document.querySelector('.timer');
 const modal = document.querySelector("dialog")
 
 texto1.addEventListener("click",()=> {
@@ -66,10 +67,18 @@ menuItem.forEach ((item)=>
 )
 
 menuh.addEventListener('click', () => {
-    //menuSmartphone
     menuLateral.style.display = 'block';
+    //menuSmartphone
 })
 
+crono.addEventListener('click', () => {
+    var cronometro = document.querySelector('.cronometro');
+    var cronometroInterno = document.querySelector('.cronometroInterno');
+    menuLateral.style.display = 'none';
+    cronometro.style.display = 'block';
+    cronometroInterno.style.display = 'block';
+    
+})
 
 input.addEventListener("click", result => {
     i++ ;
