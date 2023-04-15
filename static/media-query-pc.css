@@ -2,15 +2,14 @@
 
 /* Para computadores */
 
-body {
-    background-color: blue;
-}
-
 html, body { height: 100%}
 
+body {
+  background-color: var(--cor1);
+}
+
 header,
-footer
-{
+footer {
   width: 100%;
   padding: 20px;
 }
@@ -21,9 +20,11 @@ header {
 }
 
 nav {
-  height: 600px;
+  float: left;
   background-color: var(--cor1);
-  height: 80%;
+  height: 600px;
+  border: 1px solid #3399ff;
+  box-shadow: 10px 0 0 var(--primary);
 }
 
 section {
@@ -36,7 +37,6 @@ section article,
 section footer
 {
   width: 100%;
-  background-color: #999999;
   border-radius: 5px;
   margin: 0;
   padding: 25px;
@@ -53,12 +53,6 @@ section article
   background-color: var(--cor1);
 }
 
-nav {
-  float: left;
-  border: 1px solid #3399ff;
-  box-shadow: 10px 0 0 var(--primary);
-}
-
 footer {
   clear: both;
   background-color: var(--primary);
@@ -69,9 +63,13 @@ footer {
 /* menu */
 
 .menuh {
-    display: none;
+  display: none;
 }
-  
+
+.timer {
+  display: none;
+}
+
 .menuLateral {
     width: 300px;  
     padding: 40px 0 0 1%;
@@ -83,8 +81,6 @@ footer {
 .menuLateral.expandir {
     width: 300px;
 }
-  
-
   
 /* menu fim */
 
@@ -161,3 +157,43 @@ footer {
 }
 
 /* cronometro fim */
+
+ul li.list {
+  transition: 0.2s;
+}
+
+ul li.list:hover {
+  background-color: var(--primary);
+} 
+
+ul li.list a {
+  color: #000;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 20px 4%;
+  display: flex;
+  margin-bottom: 20px;
+  line-height: 40px;
+
+}
+
+ul li.active {
+  background-color: var(--primary);
+}
+
+ul li.list a .title {
+  margin-left: 40px;
+  transition: 1s;
+  opacity: 1;
+  white-space: nowrap;
+}
+
+.menuLateral.expandir .title {
+  margin-left: 40px;
+  opacity: 1;
+}
+
+ul li.list a .icon {
+  font-size: 30px;
+  margin-left: 10px;
+}

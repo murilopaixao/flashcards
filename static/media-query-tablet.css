@@ -2,18 +2,59 @@
 
 /* Para tablets */
 
-body {
-    background-color: rgb(226, 43, 67);
-}
-
 .menuh {
-    display: block;
+    display: none;
 }
 
 .menuLateral {
     display: block;
+    width: 100%;
 }
 
 ul li.list a .title {
-    display: none;
+    display: block;
 }
+
+ul {
+    display: flex;
+    justify-content: start; 
+}
+
+li {
+    transition: 0.2s;
+    padding-right: 12px;    
+}
+  
+ul li.list:hover {
+  background-color: var(--primary);
+} 
+  
+ul li.list a {
+  color: #000;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 10px 4%;
+  display: flex;  
+  line-height: 20px;
+}
+  
+ul li.active {
+  background-color: var(--primary);
+}
+  
+ul li.list a .title {
+  margin-left: 20px;
+  transition: 1s;
+  white-space: nowrap;
+}
+  
+.menuLateral.expandir .title {
+  margin-left: 40px;
+  opacity: 1;
+}
+  
+ul li.list a .icon {
+  font-size: 20px;
+  margin-left: 10px;
+}
+  
