@@ -159,12 +159,16 @@ footer {
 /* cronometro fim */
 
 ul li.list {
-  transition: 0.2s;
+  /* transition: 0.2s; */
+  position: relative;
 }
 
-ul li.list:hover {
+/* ul li.list:hover {
   background-color: var(--primary);
 } 
+ */
+
+
 
 ul li.list a {
   color: #000;
@@ -196,4 +200,21 @@ ul li.list a .title {
 ul li.list a .icon {
   font-size: 30px;
   margin-left: 10px;
+}
+
+ul li.list::before {
+  background-color: var(--primary);
+  transition: transform 300ms ease;
+  transform-origin: right;
+  transform: scaleX(0);
+  inset: 0;
+  display: block;
+  content: "";
+  position: absolute;
+ 
+} 
+
+ul li.list:hover::before {  
+  transform: scaleX(1);
+  transform-origin: left;
 }

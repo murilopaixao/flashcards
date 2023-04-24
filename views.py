@@ -6,12 +6,14 @@ from bson.objectid import ObjectId
 from bson.json_util import dumps
 from os import getenv
 
-flashcard_userDB = getenv('flashcard_userDB')
-flashcard_passDB = getenv('flashcard_passDB')
-flashcard_hostDB = getenv('flashcard_hostDB')
+DB_HOST = getenv('DB_HOST')
+DB_LOGIN = getenv('DB_LOGIN')
+DB_PASSWORD = getenv('DB_PASSWORD')
+DB_PORT = getenv('DB_PORT')
 
 
-conn_str = "mongodb://" + flashcard_userDB + ":" + flashcard_passDB + "@" + flashcard_hostDB
+conn_str = (f"mongodb://{DB_LOGIN}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}")
+
 try:
     client = pymongo.MongoClient(conn_str)
 except Exception:
@@ -52,7 +54,7 @@ def baralhos(baralhop):
             lista1.append(contadores)
         detalhado = ""
         if (baralhop != "none"):
-            detalhado = myCollection.find({"baralho": baralhop})
+            detalhado = myCollection.find({"baralho": baralhop}).sort("flanguage1", 1)
 
         return render_template('baralhos.html', subTitulo='Baralhos', lista=lista1, detalhado=detalhado, baralhop=baralhop)
 
@@ -111,19 +113,21 @@ def desafio():
     config = myCollection.find_one({"config": "baralho"},{"_id": 0, "baralhoPrincipal": 1})
     baralho = config["baralhoPrincipal"]
 
-    lista = myCollection.aggregate([ {"$match": {"baralho": baralho}}, { "$sample": { "size": 30 }}])
-    return dumps(lista)
+    lista = myCollection.aggregate([{"$match": {"baralho": baralho}}, { "$sample": { "size": 10 }}])
+    lista2 = []
+    check = {}
+    for item in lista:
+        if (myCollection.count_documents({"baralho": "conhecidas", "flanguage1": item["flanguage1"]})) == 0:
+            conhecida = "false"
+        else:
+            conhecida = "true"        
+        check = {"baralho": baralho, "flanguage1": item["flanguage1"], "flanguage2": item["flanguage2"], "conhecida": conhecida}
+        lista2.append(check)
+
+    return dumps(lista2)
 
 @app.route('/outro', methods=['GET'])
-def outro():
-    sequencia = [
-        {"baralho": "main", "flanguage1": "go", "flanguage2": "ir"},
-        {"baralho": "main", "flanguage1": "but", "flanguage2": "mas"},
-        {"baralho": "main", "flanguage1": "because", "flanguage2": "porque"},
-        {"baralho": "main", "flanguage1": "about", "flanguage2": "sobre"},
-        {"baralho": "main", "flanguage1": "have", "flanguage2": "ter"},
-        {"baralho": "main", "flanguage1": "do", "flanguage2": "fazer"},
-    ]
+def outro():    
     lista = myCollection.aggregate([ {"$match": {"baralho":"main"}}, { "$sample": { "size": 6 }}])
     #lista = myCollection.find({"baralho": "50AdjetivosMaisComuns"})
     print(lista)
@@ -132,27 +136,21 @@ def outro():
 
 @app.route('/trocarbaralho', methods=['POST'])
 def trocarbaralho():
-    #config = myCollection.find_one({"config": "baralho"},{"_id": 0, "baralhoPrincipal": 1})
-    #print(config["baralhoPrincipal"])
     json = request.json
     print(json["baralhoPrincipal"])
     
     myCollection.update_one({"config": "baralho"},{"$set": {"baralhoPrincipal": json["baralhoPrincipal"] }})
     return json
-    #return redirect('/')
 
 
 @app.route('/alterabaralho')
 def alterabaralho():
-    #lista = myCollection.find()
-
     return render_template('alterabaralho.html', subTitulo='Baralhos')
 
 @app.route('/listarbaralhos')
 def listarbaralhos():
     lista = myCollection.distinct("baralho")
     return dumps(lista)
-
 
 @app.route('/incluirpalavra', methods=['POST'])
 def incluirpalavra():

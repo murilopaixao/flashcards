@@ -10,9 +10,11 @@ services:
         ports:
           - 5000:5000
         environment:
-          - flashcard_userDB=putYourUserHere
-          - flashcard_passDB=putYourPasswordHere
-          - flashcard_hostDB=mongo:27017
+          - DB_LOGIN=putYourUserHere
+          - DB_PASSWORD=putYourPasswordHere
+          - DB_HOST=mongo
+          - DB_PORT=27017
+
     mongo:
         hostname: mongo
         container_name: mongo

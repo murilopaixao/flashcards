@@ -3,7 +3,6 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -27,18 +26,31 @@
     --cor4: #888;
 }
 
-html, body { height: 100vh;}
+html, body { height: 100%}
 
 header,
 footer
 {
   width: 100%;
-  padding: 15px;
+  padding: 20px;
 }
 
-header {
-  color: white;
-  background-image: radial-gradient(circle, rgb(18, 128, 225) 0%, rgb(0, 32, 105) 100%);
+header
+{
+  margin-bottom: 5px;
+  background-color: var(--primary);
+}
+
+nav {
+  height: 600px;
+  background-color: var(--cor1);
+  height: 80%;
+}
+
+section {
+  float: left;
+  width: calc(60% - 20px);
+  margin: 0 5px 0px 15px;
 }
 
 section article,
@@ -47,8 +59,8 @@ section footer
   width: 100%;
   background-color: #999999;
   border-radius: 5px;
-  padding: 20px 20px 20px 20px ;
-  
+  margin: 0;
+  padding: 25px;
 }
 
 section header {
@@ -63,6 +75,7 @@ section article
 }
 
 nav {
+  float: left;
   border: 1px solid #3399ff;
   box-shadow: 10px 0 0 var(--primary);
 }
@@ -74,98 +87,11 @@ footer {
   
 }
 
-/* menu */
-
 .menuh {
-  display: none;
+  padding-left: 20px;  
+  cursor: pointer;
+  font-size: 50px;
 }
-
-.menuLateral {
-  display: none;
-}
-
-ul {
-  height: 100%;
-  list-style-type: none;
-}
-
-
-/* menu fim */
-
-/* cronometro */
-.cronometro {
-  width: 95%;
-  height: 100px;
-  margin-left: 10px;
-  box-shadow: 0 0 20px var(--cor4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  display: none;
-}
-
-.cronometroInterno {
-  display: none;
-}
-
-.cronometroAtivar {
-  font-size: 20px;
-  width: 100%;
-  display: flex;  
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-}
-
-.cronometroItem {
-  width: 90px;
-  height: 90px;
-  margin-left: 4px;
-  box-shadow: 0 0 10px var(--cor4);
-  background-color: var(--primary);
-  color: var(--cor3);
-  border-radius: 3px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 5px;  
-}
-
-.cronometroItem span {
-  font-weight: bolder;
-  font-size: 38px;
-}
-
-.cronometroItem span.tempo {
-    font-size: 17px;
-}
-
-.btnCron{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding-bottom: 5px;
-  background-color: var(--cor3);
-}
-
-.btnCronInterno button {
-  height: 35px;
-  font-size: 17px;
-  width: 80px;
-  padding: 7px;
-  border-radius: 5px;
-}
-
-.btnCronStart {
-  background-color: green;
-}
-
-.btnCronStop {
-  background-color: red;
-}
-
-/* cronometro fim */
 
 .borda {
     border: 1px solid #3399ff;
@@ -174,11 +100,12 @@ ul {
 
 .cardFlash {
     width: 350px;
-    height: 470px;    
+    height: 470px;
+    margin: 3px;
     display: grid;    
     grid-template-rows: 45% 45% 10%;
     font-size: 2rem;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);    
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .cardFlashIng {
@@ -201,13 +128,6 @@ ul {
   margin: auto;
 }
 
-.comandos span {
-  width: 35px;
-  height: 35px;
-  margin-left: 20px;
-  font-size: 35px;
-}
-
 .comandos span:hover {
   background-color: var(--cor3);
 }
@@ -216,12 +136,6 @@ ul {
   float: left;
   cursor: pointer;
   text-align: center;
-  padding-left: 5px;
-}
-
-.comandosi span:hover {
-  background-color: var(--primary);
-  font-weight: bold;
 }
 
 .categoria {
@@ -231,11 +145,77 @@ ul {
     transform: translate(-50%, -50%);
 }
 
+span {
+  width: 35px;
+  height: 35px;
+  margin-left: 20px;
+}
 
 .texto2 {
   display: none;
 }
 
+.menuLateral {
+  display: block;
+  border-left: 30px solid var(--secondary);
+  position: relative;
+  width: 300px;  
+  transition: 0.5s;
+}
+
+.menuLateral ul {
+  list-style-type: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-left: 0px;
+  padding-top: 20px;
+}
+
+.menuLateral ul li {
+  position: relative;
+  list-style: none;
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.menuLateral ul li a {
+  position: relative;
+  display: flex;
+  width: 100%;
+  text-decoration: none;
+  color: #464444
+}
+
+.menuLateral ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 70px;
+  font-size: 30px;
+}
+
+.menuLateral ul li a .title {
+  position: relative;
+  display: block;
+  padding-left: 5px;
+  height: 60px;
+  line-height: 60px;
+  white-space: nowrap;
+}
+
+.menuLateral ul li.active {
+  background-color: var(--primary);
+}
+
+.menuLateral ul li:hover {
+  background-color: var(--cor4);
+  color: var(--cor2);
+}
 
 .campos {
   float: left;
@@ -269,10 +249,11 @@ section header {
 
 .miniCard {
   width: 300px;
-  height: 65px;
-  margin: 5px;
-  padding: 3px;
-  border: 2px solid #d2d4d6;
+  height: 60px;
+  margin-top: 5px;
+  margin-left: 5px;
+  border: 1px solid #d2d4d6;
+  padding: 5px;
 }
 
 .contador {
@@ -307,6 +288,10 @@ section header {
   font-size: 1rem;
   display: block;
   text-align: right;
+}
+
+ul .sub-menu {
+  display: none;
 }
 
 .modal-container {
@@ -352,51 +337,4 @@ section header {
 .fecharModal span:hover {
   background-color: var(--cor1);
   cursor: pointer;
-}
-
-.table-baralhoDetalhado caption,
-.table-baralhoDetalhado tr th {
-  background-color: #3399ff;
-  color: #ffffff;
-  text-align: left;
-  font-weight: bold;
-}
-
-.table-opr tr:nth-child(even) {
-  background:rgba(38, 43, 62, 0.05);
-}
-
-.table-baralhoDetalhado caption,
-.table-baralhoDetalhado th,
-.table-baralhoDetalhado td {
-  padding: 12px 15px;
-}
-
-.table-baralhoDetalhado tbody tr {
-  border-bottom: 1px solid #dddddd;
-}
-
-.table-baralhoDetalhado tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3 ;
-}
-
-.table-baralhoDetalhado tbody tr:nth-child(odd) {
-  background-color: rgb(233, 230, 230) ;
-}
-
-.table-baralhoDetalhado tbody tr:last-of-type {
-  border-bottom: 1px solid #3399ff;
-}
-
-.table-baralhoDetalhado tbody tr.active-row {
-  font-weight: bold;
-  color: #009879;
-}
-
-a {
-  text-decoration: none;
-}
-
-.conhecida {
-  color: #009879;
 }

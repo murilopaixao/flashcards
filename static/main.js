@@ -82,17 +82,25 @@ crono.addEventListener('click', () => {
 
 input.addEventListener("click", result => {
     i++ ;
-    if (i == 6) {
+    if (i == 10) {
         i = 0
         palavrasDesafioConvertida = palavrasDesafioConvertida2
     }        
 
+    
     texto2.style.display = 'none'
     texto1.innerHTML = palavrasDesafioConvertida[i].flanguage1
     texto2.innerHTML = palavrasDesafioConvertida[i].flanguage2
     cardTopo.innerHTML = palavrasDesafioConvertida[i].baralho
-    if (i == 5) {
+    if (i == 9) {
         buscarDesafio2();
+    }
+    if (palavrasDesafioConvertida[i].conhecida == "true") {
+        cardFlashIng.style.color = 'green';
+        console.log("VERDE");
+    } else {
+        cardFlashIng.style.color = 'black';
+        console.log("desconhecida");
     }
 });
 
@@ -102,7 +110,7 @@ async function buscarDesafio() {
     console.log(palavrasDesafioConvertida);
     texto1.innerHTML = palavrasDesafioConvertida[0].flanguage1
     texto2.innerHTML = palavrasDesafioConvertida[0].flanguage2
-    cardTopo.innerHTML = palavrasDesafioConvertida[i].baralho  
+    cardTopo.innerHTML = palavrasDesafioConvertida[i].baralho
 }
 
 async function buscarDesafio2() {
