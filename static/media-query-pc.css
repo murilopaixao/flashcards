@@ -88,7 +88,7 @@ footer {
 .cronometro {
   width: 95%;
   height: 100px;
-  margin-left: 10px;
+  margin: 40px 0 0 10px;
   box-shadow: 0 0 20px var(--cor4);
   display: flex;
   justify-content: center;
@@ -161,23 +161,20 @@ footer {
 ul li.list {
   /* transition: 0.2s; */
   position: relative;
+  border-bottom: 1px solid var(--primary);
 }
 
-/* ul li.list:hover {
+ul li.list:hover {
   background-color: var(--primary);
 } 
- */
-
-
 
 ul li.list a {
   color: #000;
   text-decoration: none;
-  font-size: 20px;
-  padding: 20px 4%;
-  display: flex;
-  margin-bottom: 20px;
-  line-height: 40px;
+  font-size: 18px;
+  padding: 20px;
+  display: flex;  
+  line-height: 30px;
 
 }
 
@@ -202,7 +199,7 @@ ul li.list a .icon {
   margin-left: 10px;
 }
 
-ul li.list::before {
+ul li.list2::before {
   background-color: var(--primary);
   transition: transform 300ms ease;
   transform-origin: right;
@@ -214,7 +211,7 @@ ul li.list::before {
  
 } 
 
-ul li.list:hover::before {  
+ul li.list2:hover::before {  
   transform: scaleX(1);
   transform-origin: left;
 }

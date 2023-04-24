@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gajraj+One&family=Montserrat:wght@100&family=Open+Sans&family=Roboto&display=swap');
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 /*
@@ -19,12 +19,12 @@
 */
 
 :root {
-    --primary: #3399ff;
-    --secondary: #888888;
-    --cor1: #eee;
-    --cor2: #fff;
-    --cor3: #dadada;
-    --cor4: #888;
+  --primary: #3399ff;
+  --secondary: #888888;
+  --cor1: #eee;
+  --cor2: #fff;
+  --cor3: #dadada;
+  --cor4: #888;
 }
 
 html, body { height: 100vh;}
@@ -35,6 +35,8 @@ footer
   width: 100%;
   padding: 15px;
 }
+
+
 
 header {
   color: white;
@@ -70,8 +72,8 @@ nav {
 footer {
   clear: both;
   background-color: var(--primary);
-  bottom: 0px;
-  
+  bottom: 0;
+  position: absolute;  
 }
 
 /* menu */
@@ -395,8 +397,4 @@ section header {
 
 a {
   text-decoration: none;
-}
-
-.conhecida {
-  color: #009879;
 }
