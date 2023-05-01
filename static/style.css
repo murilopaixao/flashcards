@@ -267,6 +267,8 @@ section header {
 .cardS {
   display: flex;
   flex-wrap: wrap;
+  border-bottom: 1px solid var(--cor3);
+  margin-bottom: 15px;
 }
 
 .miniCard {
@@ -356,6 +358,11 @@ section header {
   cursor: pointer;
 }
 
+/* tabela */
+table {
+  border-collapse: collapse;
+}
+
 .table-baralhoDetalhado caption,
 .table-baralhoDetalhado tr th {
   background-color: #3399ff;
@@ -397,4 +404,14 @@ section header {
 
 a {
   text-decoration: none;
+}
+
+.input-busca {
+  margin-bottom: 10px;
+}
+
+#input-busca {
+  width: 360px;
+  padding: 7px;
+  outline: none ;
 }

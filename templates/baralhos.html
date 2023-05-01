@@ -16,13 +16,16 @@
         {% endfor %}
     </div>
     {% if detalhado %}
-    <div class="baralhoDetalhado">        
+    <div class="baralhoDetalhado">
+        <div class="input-busca">
+            <input type="text" id="input-busca" name="filtro" placeholder="Pesquisar por ?"><br>
+        </div>
         <table class="table-baralhoDetalhado">
             <caption>{{baralhop}}</caption>
             <thead>
                 <tr><th>#</th><th>Inglês</th><th>Português</th><th>Comandos</th></tr>
             </thead>
-            <tbody>
+            <tbody id="table-cards">
                 {% for card in detalhado %}
                 <tr>
                     <td>{{loop.index}}</td>
@@ -49,4 +52,5 @@
 
 {% block js %}
     <script src="{{ url_for('static', filename='baralho.js') }}"></script>
+    <script src="{{ url_for('static', filename='tabelaFiltro.js') }}"></script>
 {% endblock %}
