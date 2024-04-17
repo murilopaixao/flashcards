@@ -10,10 +10,12 @@ services:
         ports:
           - 5000:5000
         environment:
+          - DB_SCHEME=mongodb
           - DB_LOGIN=putYourUserHere
           - DB_PASSWORD=putYourPasswordHere
           - DB_HOST=mongo
           - DB_PORT=27017
+          - FLASK_RUN_HOST=0.0.0.0
 
     mongo:
         hostname: mongo
