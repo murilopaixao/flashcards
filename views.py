@@ -13,7 +13,11 @@ DB_PASSWORD = getenv('DB_PASSWORD')
 DB_PORT = getenv('DB_PORT')
 
 
-conn_str = (f"{DB_SCHEME}://{DB_LOGIN}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}")
+if (DB_SCHEME == "mongodb"):
+    conn_str = (f"{DB_SCHEME}://{DB_LOGIN}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}")
+else:
+    conn_str = (f"{DB_SCHEME}://{DB_LOGIN}:{DB_PASSWORD}@{DB_HOST}")
+
 
 try:
     client = pymongo.MongoClient(conn_str)
