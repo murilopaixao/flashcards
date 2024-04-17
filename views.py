@@ -6,13 +6,14 @@ from bson.objectid import ObjectId
 from bson.json_util import dumps
 from os import getenv
 
+DB_SCHEME = getenv('DB_SCHEME')
 DB_HOST = getenv('DB_HOST')
 DB_LOGIN = getenv('DB_LOGIN')
 DB_PASSWORD = getenv('DB_PASSWORD')
 DB_PORT = getenv('DB_PORT')
 
 
-conn_str = (f"mongodb://{DB_LOGIN}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}")
+conn_str = (f"{DB_SCHEME}://{DB_LOGIN}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}")
 
 try:
     client = pymongo.MongoClient(conn_str)
